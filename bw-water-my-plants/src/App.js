@@ -3,6 +3,7 @@ import './App.css';
 import React, {useState} from 'react'
 import SignUpForm from './Components/SignUpForm';
 import PlantForm from './Components/PlantForm';
+import Plant from './Components/Plant';
 import axios from 'axios';
 import schema from './validation/formSchema';
 import { ValidationError } from 'yup';
@@ -24,6 +25,7 @@ const initialFormErrors = {
 }
 
 const initialPlant = []
+//::::::
 
 function App() {
   //States for Login
@@ -67,15 +69,27 @@ function App() {
     .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
   }
 
-  //submit form for props in PlantForm.js
+  //Post Form to backend ::: Uncomment code below when we have API
 
+  const postNewPlant = newPlant => {
+    axios.post(`fakeapi.com`, newPlant)
+      .then(res => {
+        setPlant([res, ...plant])
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+  }
+
+  //submit form for props in PlantForm.js
   const formSubmit = () => {
     const newPlant = {
       name: formValues.name.trim(),
       species: formValues.species.trim(),
       water: ['water'].filter(water => !!formValues[water])
     }
-    // postNewPlant(newPlant);
+    postNewPlant(newPlant);
   }
 
 
@@ -92,7 +106,14 @@ function App() {
       change={inputChange}
       submit={formSubmit}
       errors={formErrors}
-      />
+      /> 
+      {/* This code below is a map to return the plant cards */}
+      {plant.map( plants=> {
+        return (
+            <Plant key={plants.id} details={plants} />
+            )})
+      }
+      {/* :::::::: */}
       <h2>User List</h2>
       {users.map(user => {return(
         <div key={Math.random()}>

@@ -26,6 +26,7 @@ export default function PlantForm(props){
                         name='name'
                         type='text'
                         onChange={onChange}
+                        placeholder='Please Input Plant Nick Name'
                     />
                 </label>
                 <label> Plant Species:
@@ -34,6 +35,7 @@ export default function PlantForm(props){
                         name='species'
                         type='text'
                         onChange={onChange}
+                        placeholder='Please Input Plant Species'
                     />
                 </label>
                 {/* CheckBox - Does the plant require strict vs not strict watering schedule. i.e. cactus (doesnt need much water) vs other normal plant */}
@@ -45,6 +47,7 @@ export default function PlantForm(props){
                         checked={values.water}
                     />
                 </label>
+                <button onSubmit={submit}>Submit Plant!</button>
             </div>
         </form>
     )
