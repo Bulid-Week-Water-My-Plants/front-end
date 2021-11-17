@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 export default function LoginForm ({submit, error}) {
-    const initalDetails = {name: '', email: '', password: ''}
+    const initalDetails = {email: '', password: ''}
     const [details, setDetails] = useState(initalDetails)
 
 
@@ -14,7 +14,7 @@ export default function LoginForm ({submit, error}) {
     //declare onChange 
     const onChange = event =>{
         const {name,value} = event.target
-        setDetails({...details, [event.target.name]:value});
+        setDetails({...details, [name]:value});
       }
     
 
@@ -23,15 +23,6 @@ export default function LoginForm ({submit, error}) {
         <form onSubmit={onSubmit}>
             <div className = 'container'>
                 <h2>Login</h2>
-                <div className = 'form'>
-                    <label>Name:
-                        <input 
-                        type='text'
-                        name='name'
-                        onChange={onChange}
-                        />
-                    </label>
-                </div>
                 <div className = 'form'>
                     <label>Email:
                         <input 
