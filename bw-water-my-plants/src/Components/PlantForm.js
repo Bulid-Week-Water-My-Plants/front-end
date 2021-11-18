@@ -7,7 +7,7 @@ const ContainerForm = styled.div`
     display:flex;
     align-items: center;
     justify-content:center;
-    background-image: url(${myImage})
+    background-image: url(${myImage});
 `
 const Form = styled.form `
     display:block;
