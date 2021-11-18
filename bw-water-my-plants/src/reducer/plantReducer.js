@@ -1,20 +1,7 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, ADD_PLANT, SET_ERROR } from "../actions/plantActions";
 
 const initialPlantState = {
-    plants: [
-        {
-            id: 1,
-            name: "Dandelions",
-            species: 'Taraxacum',
-            water: true
-        },
-        {
-            id: 2,
-            name: "Cherry Blossom",
-            species: "Sakura",
-            water: true
-        },
-    ],
+    plants: [],
     loading: false,
     error: '',
 }
