@@ -40,6 +40,7 @@ code {
 
 .SignupContainer{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-self: center;
   margin: 10em;

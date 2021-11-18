@@ -52,6 +52,7 @@ function SignUpForm (props) {
 
     return(
         <div className = "SignupContainer">
+            <h2>Sign Up</h2>
             <div>
                 <div id='errName'>{errors.name}</div><div id='errEmail'>{errors.email}</div><div id='errPwd'>{errors.pwd}</div><div id='errTos'>{errors.tos}</div>
             </div>
