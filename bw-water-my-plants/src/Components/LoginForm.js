@@ -10,6 +10,7 @@ export default function LoginForm ({submit, error}) {
     const onSubmit = event => {
         event.preventDefault();
         submit(details);
+        setDetails(initalDetails)
     }
     //declare onChange 
     const onChange = event =>{
