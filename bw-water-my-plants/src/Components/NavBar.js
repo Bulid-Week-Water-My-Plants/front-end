@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import logoImg from '../images/gallery/thumbs/03.jpg';
 
 const NavDiv = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
     margin: 0;
-    background: #3CB371;
-    height: 10vh;
+    background-image: linear-gradient(to bottom right, #3cb371, #5db33c);
+    height: 7vh;
     width: 100%;
 
     h2 {
@@ -19,35 +20,25 @@ const NavDiv = styled.div`
       }
 `;
 
-const LinkButton = styled(Link)`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    cursor: pointer;
-    border: 2px solid black;
-    min-width: 30%;
-    background: whitesmoke;
-    color: black;
+const LogoDiv = styled.span`
+    width: 4%;
+    background: red;
+    background-image: url(${logoImg});
+    background-position: center;
+    background-size: cover;
+    height: 100%;
     font-size: 2rem;
-    height: 80%;
-    text-decoration: none;
-    padding: 2% 1%;
-
+    border-radius: 50%;
+    border: 2px solid #3c7db3;
 `;
 
 const LinksDiv = styled.div`
     display: flex;
+    justify-content: center;
     align-items: flex-end;
     height: 60%;
     width: 50%;
-    background: green; //Temp color for testing REMOVE
-`;
-
-const LogoDiv = styled.span`
-    width: 15%;
-    background: red;
-    height: 100%;
+    margin-left: 40%;
 `;
 
 const GreetingSpan = styled.span`
@@ -56,19 +47,40 @@ const GreetingSpan = styled.span`
     align-items: flex-end;
     height: 40%;
     max-width: 40%;
-    margin-left: 25%;
+    margin-left: 55%;
 
     h2{
         margin-right: 1.3%;
         font-size: 2rem;
+        color: whitesmoke;
+        text-shadow: 2px 2px 5px #3c7db3;
     }
+`;
+
+const LinkButton = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    min-width: 30%;
+    color: whitesmoke;
+    text-shadow: 2px 2px 5px #3c7db3;
+    font-size: 2rem;
+    height: 80%;
+    text-decoration: none;
+    padding: 2% 1%;
+
+    &:hover{
+        background-image: linear-gradient(to bottom right, #3cb372, rgba(60,125,179,.3));
+    }
+
 `;
 
 const AccountButtons = styled(LinkButton)`
     height:40%;
     min-width: 0%;
     max-width: 30%;
-    font-size: 1 rem;
+    font-size: 1.5rem;
     padding: 2% .5%;
     margin-right: 1.3%;
 `;
@@ -77,7 +89,7 @@ const NavBar = (props) =>{
 
     return (
         <NavDiv>
-            <LogoDiv><h3>LOGO</h3></LogoDiv>
+            <LogoDiv></LogoDiv>
             {
                 props.user.name ? 
                     <GreetingSpan>
@@ -95,9 +107,8 @@ const NavBar = (props) =>{
             <LinksDiv>
                 <LinkButton to='/'>Home</LinkButton>
                 <LinkButton to='/addplant'>Add a Plant</LinkButton>
-                {/*  Uncomment when we can edit plant list
-                    <LinkButton to='/myplants'>My Plants</LinkButton> 
-                */}
+                <LinkButton to='/myplants'>My Plants</LinkButton> 
+               
             </LinksDiv>
             
         </NavDiv>
