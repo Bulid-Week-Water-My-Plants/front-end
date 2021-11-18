@@ -51,7 +51,7 @@ function SignUpForm (props) {
     }, [props.form])
 
     return(
-        <div>
+        <div className = "SignupContainer">
             <div>
                 <div id='errName'>{errors.name}</div><div id='errEmail'>{errors.email}</div><div id='errPwd'>{errors.pwd}</div><div id='errTos'>{errors.tos}</div>
             </div>
