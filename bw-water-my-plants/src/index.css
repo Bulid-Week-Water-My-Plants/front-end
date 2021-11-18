@@ -38,3 +38,9 @@ code {
   
 }
 
+.SignupContainer{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 10em;
+}
