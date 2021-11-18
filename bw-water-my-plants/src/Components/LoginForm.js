@@ -21,7 +21,7 @@ export default function LoginForm ({submit, error}) {
 
     return (
         <form onSubmit={onSubmit}>
-            <div className = 'container'>
+            <div className = 'Logincontainer'>
                 <h2>Login</h2>
                 <div className = 'form'>
                     <label>Email:
@@ -41,7 +41,9 @@ export default function LoginForm ({submit, error}) {
                         />
                     </label>
                 </div>
+                <div className ="buttoncontainer">
                 <input type='submit' value='Click here to Login'/>
+                </div>
             </div>
         </form>
     )
