@@ -80,12 +80,13 @@ const Home = (props) => {
                     <span className='img'></span>
                 </div>
             </GuestDiv>
-            {/* <h2>Plants will show up under here as they are added</h2>
+            <h2>Plants will show up under here as they are added</h2>
             {plant.map( plants=> {
                 return (
                     <Plant key={Math.random()} details={plants} />
                 )})
-            } */}
+            }
+            
         </div>
         
     )

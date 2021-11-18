@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import backImg from '../images/gallery/fulls/10.jpg'
+
 
 const ContainerDiv = styled.div `
   height: 20vh;
@@ -12,7 +12,7 @@ const ContainerDiv = styled.div `
   padding: 30px;
   font-size: 15px;
   margin-bottom: 15px;
-  background-image: url(${backImg});
+  background-image: linear-gradient(to top right, #BAE8D2, #021F15);
 `
 const MyPlantDiv = styled.div `
   font-family: 'Monsterrat', sans-serif;
