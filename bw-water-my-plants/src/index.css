@@ -21,3 +21,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App{
+  
+  display: flex;
+  flex-direction: column;
+  height: 600PX;
+}
+
+.Logincontainer{
+  
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 10em;
+  
+}
+

@@ -65,13 +65,15 @@ const LinkButton = styled(Link)`
 `;
 
 const UserDiv = styled.div`
-
+    background-image: linear-gradient(to bottom, rgba(256,256,256,0), #3cb372);
+    height: 93vh;
 `;
 
 const Home = (props) => {
-    const {plant} = props
+    const {plant, user} = props
     return (
         <div>
+            { !props.user.email ?
             <GuestDiv>
                 <h1>Never Forget to Water Your Plants!</h1>
                 <div>
@@ -80,12 +82,17 @@ const Home = (props) => {
                     <span className='img'></span>
                 </div>
             </GuestDiv>
-            {/* <h2>Plants will show up under here as they are added</h2>
-            {plant.map( plants=> {
-                return (
-                    <Plant key={Math.random()} details={plants} />
-                )})
-            } */}
+            :
+            <UserDiv>
+                <h2>My Plants</h2>
+                {plant.map( plants=> {
+                    return (
+                        <Plant key={Math.random()} details={plants} />
+                    )})
+            }
+            </UserDiv>
+            
+            }
         </div>
         
     )
