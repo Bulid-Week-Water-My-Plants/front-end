@@ -93,7 +93,7 @@ const NavBar = (props) =>{
             {
                 props.user.name ? 
                     <GreetingSpan>
-                        <h2>Hello {props.user.name}!</h2>
+                        <h2>Hello {props.user.username}!</h2>
                         <AccountButtons to='/' onClick={props.logout}>Logout</AccountButtons>
                     </GreetingSpan> 
                     :
@@ -107,7 +107,7 @@ const NavBar = (props) =>{
             <LinksDiv>
                 <LinkButton to='/'>Home</LinkButton>
                 <LinkButton to='/addplant'>Add a Plant</LinkButton>
-                <LinkButton to='/about'>About</LinkButton> 
+                <LinkButton to='/profile'>My Profile</LinkButton> 
                
             </LinksDiv>
             

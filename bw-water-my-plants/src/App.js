@@ -6,6 +6,7 @@ import LoginForm from './Components/LoginForm'
 import PlantForm from './Components/PlantForm';
 import Home from './Components/Home'
 import NavBar from './Components/NavBar';
+import Profile from './Components/Profile';
 import axios from 'axios';
 import schema from './validation/formSchema';
 import { ValidationError } from 'yup';
@@ -31,9 +32,25 @@ const initialPlant = []
 
 function App() {
   //::::States for SignUpForm
-  const freshForm = {name:'', email:'', pwd:'', tos: false}
+  const freshForm = {username:'', email:'', phone:'', pwd:'', tos: false}
   const [users, setUsers] = useState([]) // <-- This can be rewritten to be a list of plants
   const [form, setForm] = useState(freshForm)
+
+  //::::User Sign Up 
+  const onSignUpSubmit = () => {
+    const newUser = {username: form.username.trim(), email: form.email.trim(), phone: form.phone.trim(), pwd: form.pwd, tos: form.tos}
+    axios.post('https://reqres.in/api/users'/* <-- To be replaced with backend api */, newUser)
+      .then(res => {
+        setUsers([res.data, ...users])
+        setForm(freshForm) })
+      .catch(err => console.log(err))
+    
+  }
+  //::::Form state Change for SignUp submit button
+  const onSignUpChange = (name, value) => {
+    setForm({...form, [name]: value})
+  }
+
 
   //::::Login Variables/States/Functions
   const adminUser = {
@@ -43,7 +60,7 @@ function App() {
   }
 
   const initialUser = {
-    name: '',
+    username: '',
     email: ''
   }
 
@@ -52,7 +69,6 @@ function App() {
   const [error,setError] = useState('');
 
   const loginSubmit = details => {
-    console.log(details);
     if(details.email === adminUser.email && details.password===adminUser.password){
       console.log('Success!')
       setUser({
@@ -74,20 +90,6 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
 
-  //::::User Sign Up 
-  const onSignUpSubmit = () => {
-    const newUser = {name: form.name.trim(), email: form.email.trim(), pwd: form.pwd, tos: form.tos}
-    axios.post('https://reqres.in/api/users'/* <-- To be replaced with backend api */, newUser)
-      .then(res => {
-        setUsers([res.data, ...users])
-        setForm(freshForm) })
-      .catch(err => console.log(err))
-    
-  }
-  //::::Form state Change for SignUp submit button
-  const onSignUpChange = (name, value) => {
-    setForm({...form, [name]: value})
-  }
 
   ////Below here will be onChange and onSubmit functions for PlantForm.js
   //::::::
@@ -167,6 +169,10 @@ function App() {
           } 
         />
 
+        <Route path='/profile' element={
+          <Profile user={user}/>
+          }
+        />
       </Routes>
       {/* This code below is a map to return the plant cards */}
       
