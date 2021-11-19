@@ -67,13 +67,27 @@ const LinkButton = styled(Link)`
 const UserDiv = styled.div`
     background-image: linear-gradient(to bottom, rgba(256,256,256,0), #3cb372);
     height: 93vh;
+
+    h2{
+        font-size: 5rem;
+    }
+
+    h3{
+        font-size: 3rem;
+    }
+
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const Home = (props) => {
     const {plant, user} = props
     return (
         <div>
-            { !props.user.email ?
+            { !user.email ?
             <GuestDiv>
                 <h1>Never Forget to Water Your Plants!</h1>
                 <div>
@@ -85,11 +99,19 @@ const Home = (props) => {
             :
             <UserDiv>
                 <h2>My Plants</h2>
-                {plant.map( plants=> {
-                    return (
-                        <Plant key={Math.random()} details={plants} />
-                    )})
-            }
+                { 
+                    plant.length<1 ? 
+                    <div>
+                        <h3>You don't have any plants added yet, click the button below to add a plant</h3>
+                        <LinkButton to='/addplant'>Add Plant</LinkButton>
+                    </div>
+                :
+                    plant.map( plants=> {
+                        return (
+                            <Plant key={Math.random()} details={plants} />
+                        )})
+                
+                }
             </UserDiv>
             
             }

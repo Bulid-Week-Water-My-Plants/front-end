@@ -107,7 +107,7 @@ const NavBar = (props) =>{
             <LinksDiv>
                 <LinkButton to='/'>Home</LinkButton>
                 <LinkButton to='/addplant'>Add a Plant</LinkButton>
-                <LinkButton to='/myplants'>My Plants</LinkButton> 
+                <LinkButton to='/about'>About</LinkButton> 
                
             </LinksDiv>
             
