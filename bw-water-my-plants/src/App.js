@@ -56,7 +56,7 @@ function App() {
     if(details.email === adminUser.email && details.password===adminUser.password){
       console.log('Success!')
       setUser({
-        name: details.name,
+        name: adminUser.name, //THIS IS TEMPORARY WHILE USER BACKEND IS BEING SETUP
         email: details.email
       })
     } else {
