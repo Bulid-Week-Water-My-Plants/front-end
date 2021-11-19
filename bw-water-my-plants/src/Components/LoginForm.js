@@ -4,15 +4,15 @@ import styled from 'styled-components';
 
 
 export default function LoginForm ({submit, error}) {
-    const initalDetails = {email: '', password: ''}
-    const [details, setDetails] = useState(initalDetails)
+    const initialDetails = {username: '', password: ''}
+    const [details, setDetails] = useState(initialDetails)
     let navigate = useNavigate();
 
     // declare onsubmit function
     const onSubmit = event => {
         event.preventDefault();
         submit(details);
-        setDetails(initalDetails)
+        setDetails(initialDetails)
         navigate("/")
     }
     //declare onChange 
@@ -28,10 +28,11 @@ export default function LoginForm ({submit, error}) {
             <div className = 'Logincontainer'>
                 <h2>Login</h2>
                 <div className = 'form'>
-                    <label>Email:
+                    <label>Username:
                         <input 
-                        type='email'
-                        name='email'
+                        type='text'
+                        name='username'
+                        value={initialDetails.username}
                         onChange={onChange}
                         />
                     </label>
@@ -41,6 +42,7 @@ export default function LoginForm ({submit, error}) {
                         <input 
                         type='password'
                         name='password'
+                        value={initialDetails.password}
                         onChange={onChange}
                         />
                     </label>

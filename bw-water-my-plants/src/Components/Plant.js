@@ -1,12 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import backImg from '../images/gallery/fulls/10.jpg'
 
 const ContainerDiv = styled.div `
   height: 20vh;
   width: 50%;
-  margin-left: 270px;
   position: relative;
   display: block;
   padding: 30px;
@@ -22,7 +20,6 @@ const MyPlantDiv = styled.div `
 `
 export default function Plant(props) {
   const { details } = props
-  const { id } = useParams()
 
   if (!details) {
     return <h3>Working fetching your plants details...</h3>

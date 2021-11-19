@@ -66,7 +66,7 @@ const LinkButton = styled(Link)`
 
 const UserDiv = styled.div`
     background-image: linear-gradient(to bottom, rgba(256,256,256,0), #3cb372);
-    height: 93vh;
+    height: 89vh;
 
     h2{
         font-size: 5rem;
@@ -76,10 +76,16 @@ const UserDiv = styled.div`
         font-size: 3rem;
     }
 
-    div{
+    .noplants{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .plantsdiv{
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 `;
 
@@ -101,14 +107,17 @@ const Home = (props) => {
                 <h2>My Plants</h2>
                 { 
                     plant.length<1 ? 
-                    <div>
+                    <div className='noplants'>
                         <h3>You don't have any plants added yet, click the button below to add a plant</h3>
                         <LinkButton to='/addplant'>Add Plant</LinkButton>
                     </div>
-                :
+                    :
                     plant.map( plants=> {
                         return (
-                            <Plant key={Math.random()} details={plants} />
+                            <div className='plantsdiv'>
+                                <Plant key={Math.random()} details={plants} />
+                            </div>
+                            
                         )})
                 
                 }

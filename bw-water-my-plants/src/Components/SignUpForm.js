@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import * as Yup from 'yup';
 
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const formSchema = Yup.object().shape({
-    name: Yup.string()
-        .required('Must include a name'),
+    username: Yup.string()
+        .min(2, "Username must be at least 2 characters long")
+        .required('Must include a username'),
     email: Yup.string()
         .email('Must be a valid email address.')
         .required('Must include an email address.'),
+    phone: Yup.string()
+        .matches(phoneRegExp, "Must be a valid phone number"),
     pwd: Yup.string()
         .required('Password is required.')
         .min(8, 'Password must be at least 8 characters long.'),
@@ -18,8 +23,9 @@ const formSchema = Yup.object().shape({
 function SignUpForm (props) {
 
     const [errors, setErrors] = useState({
-        name: '',
+        username: '',
         email: '',
+        phone: '',
         pwd: '',
         tos: ''
     })
@@ -52,20 +58,19 @@ function SignUpForm (props) {
 
     return(
         <div className = "SignupContainer">
-            <div>
-                <div id='errName'>{errors.name}</div><div id='errEmail'>{errors.email}</div><div id='errPwd'>{errors.pwd}</div><div id='errTos'>{errors.tos}</div>
-            </div>
             <form onSubmit={handleSubmit}>
-                <label>Name: 
+                <div id='errUsername'>{errors.username}</div>
+                <label>Username: 
                     <input 
                     type='text'
-                    name='name'
+                    name='username'
                     value={props.form.name}
                     onChange={event => handleChange(event)}
                     />
 
                 </label>
                 <br/>
+                <div id='errEmail'>{errors.email}</div>
                 <label>Email: 
                     <input 
                     type='text'
@@ -75,6 +80,17 @@ function SignUpForm (props) {
                     />
                 </label>
                 <br/>
+                <div id='errPhone'>{errors.phone}</div>
+                <label>Phone Number: 
+                    <input 
+                    type='text'
+                    name='phone'
+                    value={props.form.phone}
+                    onChange={event => handleChange(event)}
+                    />
+                </label>
+                <br/>
+                <div id='errPwd'>{errors.pwd}</div>
                 <label>Password: 
                     <input 
                     type='password'
@@ -84,6 +100,7 @@ function SignUpForm (props) {
                     />
                 </label>
                 <br/>
+                <div id='errTos'>{errors.tos}</div>
                 <label>Terms of Service 
                 <input 
                     type='checkbox'
